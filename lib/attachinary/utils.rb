@@ -15,7 +15,7 @@ module Attachinary
           Attachinary::File.new hash.slice(*Attachinary::File.attr_accessible[:default].to_a)
         else
           # this line added:
-          hash.except!("signature", "created_at", "bytes", "type", "etag", "url", "secure_url", "tags", "pages")
+          hash.except!("signature", "created_at", "bytes", "type", "etag", "url", "secure_url", "tags", "pages", "original_filename")
           permitted_params = ActionController::Parameters.new(hash).permit(:public_id, :version, :width, :height, :format, :resource_type)
           Attachinary::File.new(permitted_params)
         end
